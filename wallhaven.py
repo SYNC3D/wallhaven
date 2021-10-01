@@ -7,6 +7,9 @@ http = urllib3.PoolManager()
 paths = []
 downloaddir = "~/Pictures/Downloaded/"
 
+# You can change the parameters below.
+# Check the readme file to see where you can get more information
+
 parameters = {
     "categories": "101",
     "purity": "100",
