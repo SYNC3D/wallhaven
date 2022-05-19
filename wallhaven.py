@@ -3,10 +3,21 @@ import json
 import urllib3
 import os
 import shutil
+import argparse
+
+#This section is accepting external commands from the command Line
+parser = argparse.ArgumentParser()
+
+parser.add_argument('categories')
+parser.add_argument('purity')
+
+args = parser.parse_args()
 
 http = urllib3.PoolManager()
 paths = []
 downloaddir = "/home/cobus/Pictures/Downloaded/"
+
+##
 
 # You can change the parameters below.
 # Check the readme file to see where you can get more information
@@ -26,10 +37,10 @@ for file_name in os.listdir(source_folder):
 
 
 parameters = {
-    "categories": "101",
-    "purity": "010",
+    "categories": args.categories,
+    "purity": args.purity,
     "sorting": "random",
-    "atleast": "1920x1080, 2560x1440",
+    "atleast": "1920x1080",
     "ratios": "16x9",
 }
 # This is where you have to insert your apikey. Not sure whether I should hardcode it load it
