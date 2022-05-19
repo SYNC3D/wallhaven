@@ -2,17 +2,32 @@ import requests
 import json
 import urllib3
 import os
+import shutil
 
 http = urllib3.PoolManager()
 paths = []
-downloaddir = "~/Pictures/Downloaded/"
+downloaddir = "/home/cobus/Pictures/Downloaded/"
 
 # You can change the parameters below.
 # Check the readme file to see where you can get more information
 
+source_folder = "/home/cobus/Pictures/Downloaded/"
+destination_folder = "/home/cobus/Pictures/Downloaded/Keep/"
+
+# fetch all files
+for file_name in os.listdir(source_folder):
+    # construct full file path
+    source = source_folder + file_name
+    destination = destination_folder + file_name
+    # move only files
+    if os.path.isfile(source):
+        shutil.move(source, destination)
+        print('Moved:', file_name)
+
+
 parameters = {
     "categories": "101",
-    "purity": "100",
+    "purity": "010",
     "sorting": "random",
     "atleast": "1920x1080, 2560x1440",
     "ratios": "16x9",
