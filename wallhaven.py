@@ -1,5 +1,4 @@
 import requests
-import json
 import urllib3
 import os
 import shutil
@@ -25,7 +24,7 @@ downloaddir = "/home/cobus/Pictures/Downloaded/"
 source_folder = "/home/cobus/Pictures/Downloaded/"
 destination_folder = "/home/cobus/Pictures/Downloaded/Keep/"
 
-# fetch all files
+#First moving all files already Download
 for file_name in os.listdir(source_folder):
     # construct full file path
     source = source_folder + file_name
@@ -55,9 +54,8 @@ data = response.json()['data']
 for d in data:
     url = d['path']
     paths.append(url)
-
+##
 # Reading the Dictionary one item at a time and downloading it.
-
 for I in paths:
     url = I
     url2 = I
