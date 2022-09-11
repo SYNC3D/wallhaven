@@ -5,11 +5,10 @@ import shutil
 import argparse
 
 #This section is accepting external commands from the command Line
-parser = argparse.ArgumentParser()
 
+parser = argparse.ArgumentParser()
 parser.add_argument('categories')
 parser.add_argument('purity')
-
 args = parser.parse_args()
 
 #Determining your home directory and then downloading to the Pictures folder
