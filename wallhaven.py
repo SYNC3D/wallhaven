@@ -12,15 +12,16 @@ parser.add_argument('purity')
 args = parser.parse_args()
 
 #Determining your home directory and then downloading to the Pictures folder
+
 home_directory = os.path.expanduser( '~' )
 path_to_downloads = os.path.join( home_directory, 'Pictures', 'Downloaded/' )
 path_to_keep = os.path.join( path_to_downloads, 'Keep/' )
-
 http = urllib3.PoolManager()
 paths = []
 downloaddir = path_to_downloads
 
 #First moving all files already Download
+
 for file_name in os.listdir(path_to_downloads):
     # construct full file path
     source = path_to_downloads + file_name
