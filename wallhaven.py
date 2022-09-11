@@ -15,29 +15,23 @@ args = parser.parse_args()
 #Determining your home directory and then downloading to the Pictures folder
 home_directory = os.path.expanduser( '~' )
 path_to_downloads = os.path.join( home_directory, 'Pictures', 'Downloaded/' )
+path_to_keep = os.path.join( path_to_downloads, 'Keep/' )
 
 http = urllib3.PoolManager()
 paths = []
-#downloaddir = "/home/cobus/Pictures/Downloaded/"
 downloaddir = path_to_downloads
-##
-
-# You can change the parameters below.
-# Check the readme file to see where you can get more information
-
-source_folder = "/home/cobus/Pictures/Downloaded/"
-destination_folder = "/home/cobus/Pictures/Downloaded/Keep/"
 
 #First moving all files already Download
-for file_name in os.listdir(source_folder):
+for file_name in os.listdir(path_to_downloads):
     # construct full file path
-    source = source_folder + file_name
-    destination = destination_folder + file_name
+    source = path_to_downloads + file_name
+    destination = path_to_keep + file_name
     # move only files
     if os.path.isfile(source):
         shutil.move(source, destination)
         print('Moved:', file_name)
 
+# You can change the parameters below.
 
 parameters = {
     "categories": args.categories,
@@ -46,7 +40,7 @@ parameters = {
     "atleast": "1920x1080",
     "ratios": "16x9",
 }
-# This is where you have to insert your apikey. Not sure whether I should hardcode it load it
+# This is where you have to insert your apikey. Not sure whether I should hardcode it or load it
 # from somewhere else. I suspect it might be better to load it from somewhere else.
 
 response = requests.get(
