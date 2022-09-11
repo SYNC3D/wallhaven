@@ -12,10 +12,14 @@ parser.add_argument('purity')
 
 args = parser.parse_args()
 
+#Determining your home directory and then downloading to the Pictures folder
+home_directory = os.path.expanduser( '~' )
+path_to_downloads = os.path.join( home_directory, 'Pictures', 'Downloaded/' )
+
 http = urllib3.PoolManager()
 paths = []
-downloaddir = "/home/cobus/Pictures/Downloaded/"
-
+#downloaddir = "/home/cobus/Pictures/Downloaded/"
+downloaddir = path_to_downloads
 ##
 
 # You can change the parameters below.
