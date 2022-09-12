@@ -18,3 +18,5 @@ Purity: Safe Sketchy NSFW
 
 Command Line Example
 ./wallhaven.py 100 100 
+
+Enjoy
