@@ -22,6 +22,23 @@ http = urllib3.PoolManager()
 paths = []
 downloaddir = path_to_downloads
 
+#Creating directories if they do not exist
+try:
+       # Create target Directory
+    os.mkdir(path_to_downloads)
+    print("Directory " , path_to_downloads ,  " Created ") 
+except FileExistsError:
+    print("Directory " , path_to_downloads ,  " already exists")
+
+try:
+       # Create target Directory
+    os.mkdir(path_to_keep)
+    print("Directory " , path_to_keep , " Created ") 
+except FileExistsError:
+    print("Directory " , path_to_keep ,  " already exists")
+
+
+
 #First moving all files already Download
 
 for file_name in os.listdir(path_to_downloads):
