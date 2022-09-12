@@ -1,4 +1,4 @@
-env /usr/bin/python3
+#!/usr/bin/python3
 
 import requests
 import urllib3
@@ -42,11 +42,14 @@ parameters = {
     "atleast": "1920x1080",
     "ratios": "16x9",
 }
-# This is where you have to insert your apikey. Not sure whether I should hardcode it or load it
-# from somewhere else. I suspect it might be better to load it from somewhere else.
 
-response = requests.get(
-    "https://wallhaven.cc/api/v1/search?apikey=SduhMlFOWiBPTgIOPpjKK9uq6w63noqV", params=parameters)
+#Your API must be in a file called api.key in the same directory as this script
+
+with open('api.key') as F:
+    contents = F.read()
+    apikey = "https://wallhaven.cc/api/v1/search?apikey=" + contents
+    response = requests.get(
+    apikey, params=parameters)
 
 # Calling the API and storing the output in a dictionary
 
@@ -58,11 +61,10 @@ for d in data:
 # Reading the Dictionary one item at a time and downloading it.
 for I in paths:
     url = I
-    url2 = I
     print(I)
-    if url2.find('/'):
-        url3 = (url2.rsplit('/', 1)[1])
-        completeName = os.path.join(downloaddir, url3)
+    if url.find('/'):
+        url1 = (url.rsplit('/', 1)[1])
+        completeName = os.path.join(downloaddir, url1)
     data = requests.get(url)
     # Save file data to local copy
     with open(completeName, 'wb')as file:
